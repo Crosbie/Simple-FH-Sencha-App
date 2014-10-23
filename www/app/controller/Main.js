@@ -2,7 +2,8 @@ Ext.define('SenchaBase.controller.Main', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
-            cloudBtn: 'button[id=doCloudCall]'
+            cloudBtn: 'button[id=doCloudCall]',
+            resArea: 'panel[id=resultArea]'
         },
         control: {
             cloudBtn:{
@@ -24,6 +25,9 @@ Ext.define('SenchaBase.controller.Main', {
         });
     },
     buttonPress: function(){
+        var panel = this.getResArea();
+        panel.setHtml('');
+
         // Option 1: Use $fh directly
         $fh.act({
             act: 'ping',
@@ -31,7 +35,7 @@ Ext.define('SenchaBase.controller.Main', {
                 testVal: 'sencha app'
             }
         }, function(res) {
-            alert(JSON.stringify(res));
+            panel.setHtml(JSON.stringify(res));
         }, function(msg, err) {
             alert('Error: '+msg);
         });

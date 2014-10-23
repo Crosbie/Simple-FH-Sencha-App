@@ -46,6 +46,11 @@ Ext.define('SenchaBase.view.Main', {
                     text: 'Do Cloud Call',
                     padding: '10px',
                     ui: 'confirm'
+                },{
+                    xtype: 'panel',
+                    id: 'resultArea',
+                    width: '100%',
+                    background: 'blue',
                 }]
             }
         ]
